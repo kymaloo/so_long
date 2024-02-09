@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/09 16:26:21 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/09 21:04:33 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(void)
 	fd = open(str, O_RDONLY);
 	ft_stock_map(game, fd);
 	close(fd);
-	printf("%d\n", check_wall(game));
+	printf("%d\n", check_map(game));
 	free(game->map->grid);
 	free(game->map);
 	free(game);
