@@ -9,30 +9,29 @@ LIBS	:= MLX42/build/libmlx42.a -ldl -lglfw -lm -g3
 SRCS	:= 	src/main.c \
 			src/get_next_line.c \
 			src/get_next_line_utils.c \
+			src/map.c \
+			src/check.c \
+			src/utils.c \
 
 OBJS	:= ${SRCS:.c=.o}
 
-all: libmlx $(NAME)
+all: $(NAME)
 
 r: re
-	valgrind ./$(NAME)
-
-libmlx:
-	@cmake MLX42 -B MLX42/build && make -C MLX42/build -j4
+	./$(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJS)
-	@rm -rf MLX42/build
 
 fclean: clean
 	@rm -rf $(NAME)
 
 re: clean all
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all, clean, fclean, re

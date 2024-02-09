@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/09 16:26:21 by trgaspar         ###   ########.fr       */
+/*   Created: 2024/02/09 14:53:47 by trgaspar          #+#    #+#             */
+/*   Updated: 2024/02/09 15:15:01 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_game	*game;
-	game = malloc(sizeof(t_game));
-	game->map = malloc(sizeof(t_map));
-	char 	*str;
-	int		fd;
+	size_t			i;
+	unsigned char	*s1_cast;
+	unsigned char	*s2_cast;
 
-	str = "maps/map.ber";
-	fd = open(str, O_RDONLY);
-	ft_count_line(game, fd);
-	close(fd);
-	fd = open(str, O_RDONLY);
-	ft_stock_map(game, fd);
-	close(fd);
-	printf("%d\n", check_wall(game));
-	free(game->map->grid);
-	free(game->map);
-	free(game);
-	return (0);
+	s1_cast = (unsigned char *)s1;
+	s2_cast = (unsigned char *)s2;
+	i = 0;
+	while (s1_cast[i] == s2_cast[i] && s1_cast[i] && s2_cast[i] && i < n)
+		i++;
+	if (n == i)
+		return (0);
+	return (s1_cast[i] - s2_cast[i]);
 }
