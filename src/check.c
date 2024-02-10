@@ -87,7 +87,7 @@ int	check_map(t_game *game)
 	return (0);
 }
 
-// int	path_finding(size_t x, size_t y, char **cells)
+// int	path_finding(int x, int y, char **cells)
 // {
 // 	int	end;
 
