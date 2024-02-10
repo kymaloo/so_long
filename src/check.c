@@ -71,25 +71,21 @@ int	check_map(t_game *game)
 	int j;
 
 	i = 0;
-	while (game->map->grid[i])
+	while (game->map->grid[i] != NULL)
 	{
 		j = 0;
-		while (game->map->grid[i][j])
+		while (game->map->grid[i][j] != '\0')
 		{
-			printf("%c\n", game->map->grid[i][j]);
 			if (game->map->grid[i][j] != '1' && game->map->grid[i][j] != '0' &&
-				game->map->grid[i][j] != 'C' && game->map->grid[i][j] != 'P' &&
-				game->map->grid[i][j] != 'E')
-			{
+			game->map->grid[i][j] != 'C' && game->map->grid[i][j] != 'P' &&
+			game->map->grid[i][j] != 'E')
 				return (-1);
-			}
 			j++;
 		}
 		i++;
 	}
 	return (0);
 }
-
 
 // int	path_finding(size_t x, size_t y, char **cells)
 // {
