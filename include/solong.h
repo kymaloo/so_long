@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 18:57:11 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:32:53 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,22 @@
 
 typedef struct s_texture
 {
-	mlx_texture_t	wall;
-	mlx_texture_t	item;
-	mlx_texture_t	spwan;
-	mlx_texture_t	floor;
-	mlx_texture_t	player;
+	mlx_texture_t	*wall;
+	mlx_texture_t	*item;
+	mlx_texture_t	*spawn;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*player;
 }			t_texture;
 
 typedef struct s_image
 {
-	mlx_image_t	wall;
-	mlx_image_t	item;
-	mlx_image_t	spwan;
-	mlx_image_t	floor;
-	mlx_image_t	player;
+	mlx_image_t	*wall;
+	mlx_image_t	*item;
+	mlx_image_t	*spawn;
+	mlx_image_t	*floor;
+	mlx_image_t	*exit;
+	mlx_image_t	*player;
 }			t_image;
 
 typedef struct s_map
@@ -54,8 +56,9 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_map			*map;
-	mlx_texture_t	*texture;
+	t_map		*map;
+	t_texture	*texture;
+	t_image		*image;
     mlx_t   		*mlx;
 }			t_game;
 
@@ -79,5 +82,9 @@ int	ft_open_map(t_game *game);
 int	ft_init_check(t_game *game);
 
 int	ft_init_window(t_game *game);
+
+void	ft_setup_texture(t_game *game);
+void	ft_setup_image(t_game *game);
+void	ft_setup_img_to_window(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:19:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 16:01:39 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:20:49 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	*ft_copy_stock_map(t_game *game)
 	}
 	while (i < game->map->count_line)
 	{
-		game->map->grid_copy[i] = game->map->grid[i];
+		game->map->grid_copy[i] = ft_strdup(game->map->grid[i]);
 		i++;
 	}
 	game->map->grid_copy[i] = NULL;

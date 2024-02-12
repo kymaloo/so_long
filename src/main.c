@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 17:25:43 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:54:49 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ int main(void)
 	
 	game = malloc(sizeof(t_game));
 	game->map = malloc(sizeof(t_map));
+	game->texture = malloc(sizeof(t_texture));
+	game->image = malloc(sizeof(t_image));
 	ft_open_map(game);
 	ft_copy_stock_map(game);
 	ft_init_check(game);
 	ft_init_window(game);
+	ft_setup_texture(game);
 	mlx_loop(game->mlx);
 	free(game->map->grid_copy);
 	free(game->map->grid);
