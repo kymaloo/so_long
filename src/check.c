@@ -6,16 +6,16 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:52 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/09 21:10:40 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:53:18 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int	check_map_format_ber(char *str)
+int	ft_check_map_format_ber(char *str)
 {
 	int		len_str;
-	
+
 	len_str = ft_strlen(str);
 	if (len_str < 5)
 		return (-1);
@@ -24,10 +24,10 @@ int	check_map_format_ber(char *str)
 	return (0);
 }
 
-int	check_map_is_rectangle(t_game *game)
+int	ft_check_map_is_rectangle(t_game *game)
 {
 	int	i;
-	
+
 	i = 0;
 	game->map->line_size = ft_strlen(game->map->grid[i]);
 	i++;
@@ -40,7 +40,7 @@ int	check_map_is_rectangle(t_game *game)
 	return (0);
 }
 
-int	check_wall(t_game *game)
+int	ft_check_wall(t_game *game)
 {
 	int	i;
 	int	j;
@@ -50,12 +50,11 @@ int	check_wall(t_game *game)
 		if (game->map->grid[0][i++] != '1')
 			return (-1);
 	i = 1;
-	game->map->line_size = ft_strlen(game->map->grid[i]);
 	j = game->map->line_size - 1;
 	while (game->map->grid[i] && i < game->map->count_line)
 	{
 		if (game->map->grid[i][j] != '1' || game->map->grid[i][0] != '1')
-			return (-1);	
+			return (-1);
 		i++;
 	}
 	i = 0;
@@ -65,10 +64,10 @@ int	check_wall(t_game *game)
 	return (0);
 }
 
-int	check_map(t_game *game)
+int	ft_check_map(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map->grid[i] != NULL)
@@ -87,21 +86,30 @@ int	check_map(t_game *game)
 	return (0);
 }
 
-// int	path_finding(int x, int y, char **cells)
-// {
-// 	int	end;
+int	ft_check_exit_item_start(t_game *game, int i)
+{
+	int	j;
 
-// 	end = 0;
-// 	if (cells[x][y] == 'C' || cells[x][y] == 'E')
-// 		++end;
-// 	cells[x][y] = '#';
-// 	if (cells[x + 1][y] != '1' && cells[x + 1][y] != '#')
-// 		end += path_finding(x + 1, y, cells);
-// 	if (cells[x - 1][y] != '1' && cells[x - 1][y] != '#')
-// 		end += path_finding(x - 1, y, cells);
-// 	if (cells[x][y + 1] != '1' && cells[x][y + 1] != '#')
-// 		end += path_finding(x, y + 1, cells);
-// 	if (cells[x][y - 1] != '1' && cells[x][y - 1] != '#')
-// 		end += path_finding(x, y - 1, cells);
-// 	return (end);
-// }
+	while (game->map->grid[i])
+	{
+		j = 0;
+		while (game->map->grid[i][j])
+		{
+			if (game->map->grid[i][j] == 'E')
+				game->map->exit++;
+			if (game->map->grid[i][j] == 'C')
+				game->map->item++;
+			if (game->map->grid[i][j] == 'P')
+			{
+				game->map->start++;
+				game->map->pos_start_x = j;
+				game->map->pos_start_y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (game->map->exit != 1 || game->map->item < 1 || game->map->start != 1)
+		return (-1);
+	return (0);
+}

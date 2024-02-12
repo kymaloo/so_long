@@ -1,6 +1,6 @@
 NAME	:= solong
 
-CFLAGS	:= -Wextra -Wall -Werror
+CFLAGS	:= -Wextra -Wall -Werror -g3
 
 HEADERS	:= -Iinclude -IMLX42/include
 
@@ -12,6 +12,8 @@ SRCS	:= 	src/main.c \
 			src/map.c \
 			src/check.c \
 			src/utils.c \
+			src/path_finding.c \
+			src/init.c \
 
 OBJS	:= ${SRCS:.c=.o}
 
@@ -21,7 +23,7 @@ r: re
 	./$(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) 
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)

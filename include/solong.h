@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/09 20:02:12 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:56:21 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,40 @@
 
 typedef struct s_map
 {
-	char    **grid;
-	//char    **grid_copy;
-	int     line_size;
-	int     count_line;
+	char	**grid;
+	char	**grid_copy;
+	int		line_size;
+	int		count_line;
+	int		exit;
+	int		start;
+	int		item;
+	int		pos_start_x;
+	int		pos_start_y;
 }	t_map;
 
 typedef struct s_game
 {
-    t_map   *map;
+	t_map	*map;
     //mlx_t   *mlx;
-}	t_game;
+}			t_game;
 
 void	ft_count_line(t_game *game, int fd);
 void	*ft_stock_map(t_game *game, int fd);
+void	*ft_copy_stock_map(t_game *game);
 void	*ft_free_all_and_exit(char **tab, int i);
 
-int	check_map_format_ber(char *str);
-int	check_map_is_rectangle(t_game *game);
+int	ft_check_map_format_ber(char *str);
+int	ft_check_map_is_rectangle(t_game *game);
+int	ft_check_wall(t_game *game);
+int	ft_check_map(t_game *game);
+int	ft_check_exit_item_start(t_game *game, int i);
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int	check_wall(t_game *game);
-int	check_map(t_game *game);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strdup(const char *s);
+
+int	ft_path_finding(int x, int y, char **cells);
+
+int	ft_open_map(t_game *game);
+int	ft_init_check(t_game *game);
 
 #endif

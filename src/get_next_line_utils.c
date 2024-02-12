@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:23:25 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/08 18:59:29 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:15:47 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ char	*ft_get_line(char *str)
 		str_return[i] = str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-		i++;
 	str_return[i] = '\0';
 	return (str_return);
 }
