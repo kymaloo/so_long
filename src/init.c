@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:24:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 16:00:58 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:27:42 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int	ft_open_map(t_game *game)
 
 int	ft_init_check(t_game *game)
 {
+	game->map->exit = 0;
+	game->map->item = 0;
+	game->map->start = 0;
 	if (ft_check_map_is_rectangle(game) != 0)
 		return (-1);
 	if (ft_check_wall(game) != 0)
@@ -44,6 +47,14 @@ int	ft_init_check(t_game *game)
 	if (ft_check_exit_item_start(game, 0) != 0)
 		return (-1);
 	if (ft_path_finding(game->map->pos_start_y, game->map->pos_start_x, game->map->grid_copy) != (game->map->exit + game->map->item))
+		return (-1);
+	return (0);
+}
+
+int	ft_init_window(t_game *game)
+{
+	game->mlx = mlx_init(game->map->line_size * 70, game->map->count_line * 70, "MLX42", true);
+	if (!game->mlx)
 		return (-1);
 	return (0);
 }

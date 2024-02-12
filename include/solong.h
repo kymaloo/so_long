@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 15:56:21 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:57:11 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@
 # include "get_next_line.h"
 # include "MLX42/MLX42.h"
 # include "MLX42/MLX42_Int.h"
+
+
+typedef struct s_texture
+{
+	mlx_texture_t	wall;
+	mlx_texture_t	item;
+	mlx_texture_t	spwan;
+	mlx_texture_t	floor;
+	mlx_texture_t	player;
+}			t_texture;
+
+typedef struct s_image
+{
+	mlx_image_t	wall;
+	mlx_image_t	item;
+	mlx_image_t	spwan;
+	mlx_image_t	floor;
+	mlx_image_t	player;
+}			t_image;
 
 typedef struct s_map
 {
@@ -35,8 +54,9 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_map	*map;
-    //mlx_t   *mlx;
+	t_map			*map;
+	mlx_texture_t	*texture;
+    mlx_t   		*mlx;
 }			t_game;
 
 void	ft_count_line(t_game *game, int fd);
@@ -57,5 +77,7 @@ int	ft_path_finding(int x, int y, char **cells);
 
 int	ft_open_map(t_game *game);
 int	ft_init_check(t_game *game);
+
+int	ft_init_window(t_game *game);
 
 #endif
