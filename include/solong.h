@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 21:32:53 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:47:52 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ typedef struct s_map
 	int		item;
 	int		pos_start_x;
 	int		pos_start_y;
+	int		pos_start_x_2;
+	int		pos_start_y_2;
+	int		px;
+	int		py;
 }	t_map;
 
 typedef struct s_game
@@ -85,6 +89,10 @@ int	ft_init_window(t_game *game);
 
 void	ft_setup_texture(t_game *game);
 void	ft_setup_image(t_game *game);
-void	ft_setup_img_to_window(t_game *game);
+void	ft_setup_img_to_window(t_game *game, int i);
+void	ft_hook(void *gamed);
+void	ft_move_perso(t_game *game);
+
+int	check_collision_top(t_game *game);
 
 #endif

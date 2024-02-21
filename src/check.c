@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:52 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 17:09:01 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:56:27 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int	ft_check_map(t_game *game)
 	int	j;
 
 	i = 0;
-	while (game->map->grid[i] != NULL)
+	while (game->map->grid[i])
 	{
 		j = 0;
-		while (game->map->grid[i][j] != '\0')
+		while (game->map->grid[i][j])
 		{
 			if (game->map->grid[i][j] != '1' && game->map->grid[i][j] != '0' &&
 			game->map->grid[i][j] != 'C' && game->map->grid[i][j] != 'P' &&

@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 21:54:49 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:16:46 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(void)
 	ft_init_check(game);
 	ft_init_window(game);
 	ft_setup_texture(game);
+	mlx_loop_hook(game->mlx, &ft_hook, game);
 	mlx_loop(game->mlx);
 	free(game->map->grid_copy);
 	free(game->map->grid);
