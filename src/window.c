@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:16:23 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/21 17:49:21 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:53:41 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_setup_texture(t_game *game)
 	game->texture->item = mlx_load_png("image/Items/coinGold.png");
 	game->texture->spawn = mlx_load_png("image/Items/star.png");
 	game->texture->exit = mlx_load_png("image/Tiles/lock_blue.png");
-	game->texture->player = mlx_load_png("image/Player/p3_stand1.png");
+	game->texture->player = mlx_load_png("image/Player/p3_stand.png");
 	ft_setup_image(game);
 }
 
@@ -60,38 +60,54 @@ void	ft_setup_img_to_window(t_game *game, int i)
 		i++;
 	}
 	mlx_image_to_window(game->mlx, game->image->spawn, game->map->pos_start_y_2 * 70, game->map->pos_start_x_2 * 70);
-	mlx_image_to_window(game->mlx, game->image->player, game->map->pos_start_y_2 * 70, game->map->pos_start_x_2 * 70);
+	mlx_image_to_window(game->mlx, game->image->player, game->map->pos_start_y_2 * 60, game->map->pos_start_x_2 * 60);
 }
-
 
 void ft_hook(void *gamed)
 {
 	t_game *game;
 
 	game = gamed;
-	// if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-	// 	mlx_close_window(game->mlx);
 	ft_move_perso(game);
 }
 
 void	ft_move_perso(t_game *game)
 {
-	
 	game->map->px = game->image->player->instances[0].x;
 	game->map->py = game->image->player->instances[0].y;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W) && check_collision_top(game) != '0')
+
+	if (mlx_is_key_down(game->mlx, MLX_KEY_W) && check_collision_top(game) == 0)
 		game->image->player->instances[0].y -= 5;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_S) && check_collision_bot(game) == 0)
 		game->image->player->instances[0].y += 5;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_A) && check_collision_left(game) == 0)
 		game->image->player->instances[0].x -= 5;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_D) && check_collision_right(game) == 0)
 		game->image->player->instances[0].x += 5;
 }
 
 int	check_collision_top(t_game *game)
 {
-	if (game->map->grid[(game->map->py - 8) / 70][game->map->px / 70] && game->map->grid[(game->map->py - 8) / 70][(game->map->px + 60) / 70])
+	if (game->map->grid[(game->map->py - 8) / 60][game->map->px / 60] == '1' || game->map->grid[(game->map->py - 8) / 60][(game->map->px + 60) / 60] == '1')
+		return (-1);
+	return (0);
+}
+
+int	check_collision_bot(t_game *game)
+{
+	if (game->map->grid[(game->map->py + 68) / 60][game->map->px / 60] == '1' || game->map->grid[(game->map->py + 68) / 60][(game->map->px + 60) / 60] == '1')
+		return (-1);
+	return (0);
+}
+int	check_collision_left(t_game *game)
+{
+	if (game->map->grid[game->map->py / 60][(game->map->px - 8) / 60] == '1' || game->map->grid[(game->map->py + 60) / 60][(game->map->px - 8) / 60] == '1')
+		return (-1);
+	return (0);
+}
+int	check_collision_right(t_game *game)
+{
+	if (game->map->grid[game->map->py / 60][(game->map->px + 68) / 60] == '1' || game->map->grid[(game->map->py + 60) / 60][(game->map->px + 68) / 60] == '1')
 		return (-1);
 	return (0);
 }

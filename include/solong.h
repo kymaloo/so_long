@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/21 17:47:52 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:50:28 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,8 @@ void	ft_hook(void *gamed);
 void	ft_move_perso(t_game *game);
 
 int	check_collision_top(t_game *game);
+int	check_collision_bot(t_game *game);
+int	check_collision_left(t_game *game);
+int	check_collision_right(t_game *game);
 
 #endif
