@@ -15,6 +15,7 @@ SRCS	:= 	src/main.c \
 			src/path_finding.c \
 			src/init.c \
 			src/window.c \
+			src/move.c \
 
 OBJS	:= ${SRCS:.c=.o}
 
