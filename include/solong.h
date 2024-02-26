@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/22 15:50:28 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:43:29 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_game
     mlx_t   		*mlx;
 }			t_game;
 
+
 void	ft_count_line(t_game *game, int fd);
 void	*ft_stock_map(t_game *game, int fd);
 void	*ft_copy_stock_map(t_game *game);
@@ -93,9 +94,11 @@ void	ft_setup_img_to_window(t_game *game, int i);
 void	ft_hook(void *gamed);
 void	ft_move_perso(t_game *game);
 
-int	check_collision_top(t_game *game);
-int	check_collision_bot(t_game *game);
-int	check_collision_left(t_game *game);
-int	check_collision_right(t_game *game);
+int	ft_check_collision_top(t_game *game);
+int	ft_check_collision_bot(t_game *game);
+int	ft_check_collision_left(t_game *game);
+int	ft_check_collision_right(t_game *game);
+
+void	ft_check_coin(t_game *game);
 
 #endif
