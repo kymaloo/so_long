@@ -17,6 +17,7 @@ SRCS	:= 	src/main.c \
 			src/window.c \
 			src/move.c \
 			src/pick_up.c \
+			src/t_coin.c \
 
 OBJS	:= ${SRCS:.c=.o}
 

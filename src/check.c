@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:52 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/21 15:56:27 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:02:47 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,15 @@ int	ft_check_exit_item_start(t_game *game, int i)
 			if (game->map->grid[i][j] == 'E')
 				game->map->exit++;
 			if (game->map->grid[i][j] == 'C')
+			{
 				game->map->item++;
+				game->coin = malloc(sizeof(t_coin *));
+				printf("%d\n%d\n\n", i, j);
+				ft_lstadd_back(game->coin, ft_lstnew(i, j));
+				// ft_lstlast(*game->coin);
+				// printf("%d\n%d\n", (*game->coin)->x, (*game->coin)->y);
+				
+			}
 			if (game->map->grid[i][j] == 'P')
 			{
 				game->map->start++;

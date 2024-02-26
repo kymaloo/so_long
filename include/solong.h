@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/26 18:43:29 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:10:52 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ typedef struct s_image
 	mlx_image_t	*player;
 }			t_image;
 
+typedef struct s_coin
+{
+	int				x;
+	int				y;
+	struct s_coin	*next;
+}			t_coin;
+
 typedef struct s_map
 {
 	char	**grid;
@@ -63,7 +70,8 @@ typedef struct s_game
 	t_map		*map;
 	t_texture	*texture;
 	t_image		*image;
-    mlx_t   		*mlx;
+	t_coin		**coin;
+    mlx_t   	*mlx;
 }			t_game;
 
 
@@ -100,5 +108,11 @@ int	ft_check_collision_left(t_game *game);
 int	ft_check_collision_right(t_game *game);
 
 void	ft_check_coin(t_game *game);
+
+t_coin	*ft_lstnew(int x, int y);
+int	ft_lstsize(t_coin *coin);
+t_coin	*ft_lstlast(t_coin *coin);
+void	ft_lstadd_back(t_coin **coin, t_coin *new);
+void	ft_lst_parse(t_game *game);
 
 #endif
