@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:52 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/26 21:02:47 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:34:46 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,12 @@ int	ft_check_exit_item_start(t_game *game, int i)
 			{
 				game->map->item++;
 				game->coin = malloc(sizeof(t_coin *));
-				printf("%d\n%d\n\n", i, j);
+				//printf("%d\n%d\n\n", i, j);
 				ft_lstadd_back(game->coin, ft_lstnew(i, j));
-				// ft_lstlast(*game->coin);
-				// printf("%d\n%d\n", (*game->coin)->x, (*game->coin)->y);
-				
+				//t_coin *last = ft_lstlast(*game->coin);
+				//printf("lastx : %d | lasty : %d\n", last->x, last->y);
+				//printf("%d\n%d\n", (*game->coin)->x, (*game->coin)->y);
+				ft_print_all_lst(*game->coin);	
 			}
 			if (game->map->grid[i][j] == 'P')
 			{

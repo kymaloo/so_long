@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:41:29 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/26 21:40:22 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:33:28 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ void	ft_lstadd_back(t_coin **coin, t_coin *new)
 }
 
 
-void	ft_lst_parse(t_game *game)
+void	ft_print_all_lst(t_coin **coin)
 {
-	while ((*game->coin)->next)
+	while ((*coin)->next != NULL)
 	{
-		if (game->map->grid[(*game->coin)->x][(*game->coin)->y] == 'C')
-			game->image->item->instances[0].enabled = 0;
-		*game->coin = (*game->coin)->next;
+		printf("lstx : %d  |  lsty : %d  |  lst_next_x : %d | lst_next_y : %d", (*coin)->x, (*coin)->y, (*coin)->next->x, (*coin)->next->y);
 	}
 }
