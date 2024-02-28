@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:16:23 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/26 21:40:32 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:07:32 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_setup_image(t_game *game)
 {
 	game->image->floor = mlx_texture_to_image(game->mlx, game->texture->floor);
 	game->image->wall = mlx_texture_to_image(game->mlx, game->texture->wall);
-	game->image->item = mlx_texture_to_image(game->mlx, game->texture->item);
+	(*game->coin)->item = mlx_texture_to_image(game->mlx, game->texture->item);
 	game->image->spawn = mlx_texture_to_image(game->mlx, game->texture->spawn);
 	game->image->exit = mlx_texture_to_image(game->mlx, game->texture->exit);
 	game->image->player = mlx_texture_to_image(game->mlx, game->texture->player);
@@ -47,7 +47,7 @@ void	ft_setup_img_to_window(t_game *game, int i)
 			if (game->map->grid[i][j] == '1')
 				mlx_image_to_window(game->mlx, game->image->wall, j * 70, i * 70);
 			if (game->map->grid[i][j] == 'C')
-				mlx_image_to_window(game->mlx, game->image->item, j * 70, i * 70);
+				mlx_image_to_window(game->mlx, (*game->coin)->item, j * 70, i * 70);
 			if (game->map->grid[i][j] == 'E')
 				mlx_image_to_window(game->mlx, game->image->exit, j * 70, i * 70);
 			if (game->map->grid[i][j] == 'P')

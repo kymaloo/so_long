@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/27 17:31:49 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:04:25 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_texture
 typedef struct s_image
 {
 	mlx_image_t	*wall;
-	mlx_image_t	*item;
+	//mlx_image_t	*item;
 	mlx_image_t	*spawn;
 	mlx_image_t	*floor;
 	mlx_image_t	*exit;
@@ -45,6 +45,7 @@ typedef struct s_coin
 {
 	int				x;
 	int				y;
+	mlx_image_t	*item;
 	struct s_coin	*next;
 }			t_coin;
 
@@ -113,10 +114,11 @@ t_coin	*ft_lstnew(int x, int y);
 int	ft_lstsize(t_coin *coin);
 t_coin	*ft_lstlast(t_coin *coin);
 void	ft_lstadd_back(t_coin **coin, t_coin *new);
-void	ft_lst_parse(t_game *game, int x, int y);
+void	ft_lst_parse(t_game *game);
 
 
 
-void	ft_print_all_lst(t_coin **coin);
+void	ft_print_all_lst(t_coin *coin);
+t_coin	ft_lst_back(t_coin *coin);
 
 #endif
