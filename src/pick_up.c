@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:32:08 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/28 16:40:27 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:35:53 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,25 @@ void	ft_check_coin(t_game *game)
 	if (game->map->grid[y][x] == 'C')
 	{
 		//mlx_delete_image(game->mlx, game->image->item);
-		ft_lst_parse(game);
+		ft_lst_parse(game, y, x);
 	}		
 }
 
-void	ft_lst_parse(t_game *game)
+t_coin	ft_lst_parse(t_game *game, int i, int j)
 {
 	t_coin	*cursor;
 	
 	cursor = *game->coin;
 	while (cursor)
 	{
-		//printf("test\n");
 		//ft_print_all_lst(cursor);
-		if (game->map->grid[cursor->y][cursor->x] == 'C')
-			(*game->coin)->item->instances[0].enabled = 0;
+		if (game->map->grid[cursor->next->y][cursor->next->x] == game->map->grid[i][j])
+		{
+	 		cursor->item->instances[0].enabled = 0;
+			ft_lstdelone(*game->coin);
+			return (*cursor);
+		}
 		cursor = cursor->next;
 	}
+	return (*cursor);
 }

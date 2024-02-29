@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/28 17:04:25 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:37:25 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,13 @@ t_coin	*ft_lstnew(int x, int y);
 int	ft_lstsize(t_coin *coin);
 t_coin	*ft_lstlast(t_coin *coin);
 void	ft_lstadd_back(t_coin **coin, t_coin *new);
-void	ft_lst_parse(t_game *game);
+t_coin	ft_lst_parse(t_game *game, int i, int j);
 
 
 
 void	ft_print_all_lst(t_coin *coin);
 t_coin	ft_lst_back(t_coin *coin);
+
+void	ft_lstdelone(t_coin *coin);
 
 #endif
