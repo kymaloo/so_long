@@ -114,7 +114,7 @@ t_coin	*ft_lstnew(int x, int y);
 int	ft_lstsize(t_coin *coin);
 t_coin	*ft_lstlast(t_coin *coin);
 void	ft_lstadd_back(t_coin **coin, t_coin *new);
-t_coin	ft_lst_parse(t_game *game, int i, int j);
+void	ft_lst_parse(t_game *game, int i, int j);
 
 
 
