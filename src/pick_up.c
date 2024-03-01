@@ -26,7 +26,7 @@ void	ft_check_coin(t_game *game)
 	}		
 }
 
-t_coin	ft_lst_parse(t_game *game, int i, int j)
+void	ft_lst_parse(t_game *game, int i, int j)
 {
 	t_coin	*cursor;
 	
@@ -37,10 +37,8 @@ t_coin	ft_lst_parse(t_game *game, int i, int j)
 		if (game->map->grid[cursor->next->y][cursor->next->x] == game->map->grid[i][j])
 		{
 	 		cursor->item->instances[0].enabled = 0;
-			ft_lstdelone(*game->coin);
-			return (*cursor);
+			ft_lstdelone(*game->coin);//probleme movais parametre
 		}
 		cursor = cursor->next;
 	}
-	return (*cursor);
 }
