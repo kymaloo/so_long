@@ -31,15 +31,17 @@ void	ft_lst_parse(t_game *game, int i, int j)
 	t_coin	*cursor;
 	
 	cursor = *game->coin;
-	while (cursor && cursor->next)
+	while (cursor)
 	{
 		//ft_print_all_lst(cursor);
-		printf("%d,%d\n%d,%d\n\n", cursor->next->y, cursor->next->x, i, j);
-		if (cursor->next->y == i && cursor->next->x == j)
+		printf("%d,%d\n%d,%d\n\n", cursor->y, cursor->x, i, j);
+		if (cursor->y == i && cursor->x == j)
 		{
 	 		cursor->item->instances[0].enabled = 0;
-			ft_lstdelone(cursor);//probleme movais parametre
+			ft_lstdelone(cursor);
+			return ;
 		}
-		cursor = cursor->next;
+		else
+			cursor = cursor->next;
 	}
 }
