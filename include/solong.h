@@ -110,7 +110,7 @@ int	ft_check_collision_right(t_game *game);
 
 void	ft_check_coin(t_game *game);
 
-t_coin	*ft_lstnew(int x, int y);
+t_coin	*ft_lstnew(int y, int x);
 int	ft_lstsize(t_coin *coin);
 t_coin	*ft_lstlast(t_coin *coin);
 void	ft_lstadd_back(t_coin **coin, t_coin *new);
