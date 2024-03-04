@@ -74,12 +74,17 @@ void	ft_print_all_lst(t_coin *coin)
 	}
 }
 
-void	ft_lstdelone(t_coin *coin)
+void	ft_lstdelone(t_coin **coin)
 {
 	t_coin	*tmp;
 
-	tmp = coin;
-	tmp->next = coin->next->next;
-	if (coin)
-		free(coin);
+	if (!*coin->next)
+	{
+		free(*coin);
+		return (*coin);
+	}
+	tmp = *coin;
+	*coin->next = *coin->next->next;
+	*coin = *coin->next;
+	free(tmp);
 }
