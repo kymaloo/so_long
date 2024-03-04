@@ -38,7 +38,7 @@ void	ft_lst_parse(t_game *game, int i, int j)
 		if (cursor->y == i && cursor->x == j)
 		{
 	 		cursor->item->instances[0].enabled = 0;
-			ft_lstdelone(cursor);
+			ft_lstdelone(&cursor);
 			return ;
 		}
 		else
