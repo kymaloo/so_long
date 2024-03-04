@@ -29,6 +29,9 @@ void	ft_check_coin(t_game *game)
 void	ft_lst_parse(t_game *game, int i, int j)
 {
 	t_coin	*cursor;
+	int	popo;
+
+	popo = 0;
 	
 	cursor = *game->coin;
 	while (cursor)
@@ -37,11 +40,12 @@ void	ft_lst_parse(t_game *game, int i, int j)
 		printf("%d,%d\n%d,%d\n\n", cursor->y, cursor->x, i, j);
 		if (cursor->y == i && cursor->x == j)
 		{
-	 		cursor->item->instances[0].enabled = 0;
+	 		*game->coin->item->instances[popo].enabled = 0;
 			ft_lstdelone(&cursor);
 			return ;
 		}
 		else
 			cursor = cursor->next;
+		popo++;
 	}
 }
