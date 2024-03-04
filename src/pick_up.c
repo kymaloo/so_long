@@ -40,7 +40,7 @@ void	ft_lst_parse(t_game *game, int i, int j)
 		printf("%d,%d\n%d,%d\n\n", cursor->y, cursor->x, i, j);
 		if (cursor->y == i && cursor->x == j)
 		{
-	 		*game->coin->item->instances[popo].enabled = 0;
+	 		(*game->coin)->item->instances[popo].enabled = 0;
 			ft_lstdelone(&cursor);
 			return ;
 		}
