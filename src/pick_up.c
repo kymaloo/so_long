@@ -38,7 +38,7 @@ void	ft_lst_parse(t_game *game, int i, int j)
 		if (cursor->next->y == i && cursor->next->x == j)
 		{
 	 		cursor->item->instances[0].enabled = 0;
-			ft_lstdelone(*game->coin);//probleme movais parametre
+			ft_lstdelone(cursor);//probleme movais parametre
 		}
 		cursor = cursor->next;
 	}
