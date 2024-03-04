@@ -34,6 +34,7 @@ void	ft_lst_parse(t_game *game, int i, int j)
 	while (cursor)
 	{
 		//ft_print_all_lst(cursor);
+		printf("%d,%d\n%d,%d\n\n", cursor->next->y, cursor->next->x, i, j);
 		if (cursor->next->y == i && cursor->next->x == j)
 		{
 	 		cursor->item->instances[0].enabled = 0;
