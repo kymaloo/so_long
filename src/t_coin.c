@@ -81,7 +81,7 @@ void	ft_lstdelone(t_coin **coin)
 	if (!(*coin)->next)
 	{
 		free(*coin);
-		return (*coin);
+		return ;
 	}
 	tmp = *coin;
 	(*coin)->next = (*coin)->next->next;
