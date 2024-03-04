@@ -41,7 +41,7 @@ void	ft_lst_parse(t_game *game, int i, int j)
 		if (cursor->y == i && cursor->x == j && (*game->coin)->item->instances[popo].enabled)
 		{
 	 		(*game->coin)->item->instances[popo].enabled = 0;
-			game->map->grid[i][j] == '0';
+			game->map->grid[i][j] = '0';
 			//ft_lstdelone(&cursor);
 			return ;
 		}
