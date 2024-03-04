@@ -12,7 +12,7 @@
 
 #include "solong.h"
 
-t_coin	*ft_lstnew(int x, int y)
+t_coin	*ft_lstnew(int y, int x)
 {
 	t_coin	*coin;
 
