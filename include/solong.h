@@ -121,6 +121,6 @@ void	ft_lst_parse(t_game *game, int i, int j);
 void	ft_print_all_lst(t_coin *coin);
 t_coin	ft_lst_back(t_coin *coin);
 
-void	ft_lstdelone(t_coin *coin);
+void	ft_lstdelone(t_coin **coin);
 
 #endif
