@@ -31,7 +31,7 @@ void	ft_lst_parse(t_game *game, int i, int j)
 	t_coin	*cursor;
 	
 	cursor = *game->coin;
-	while (cursor)
+	while (cursor && cursor->next)
 	{
 		//ft_print_all_lst(cursor);
 		printf("%d,%d\n%d,%d\n\n", cursor->next->y, cursor->next->x, i, j);
