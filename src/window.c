@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:16:23 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/28 16:07:32 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:56:25 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void ft_hook(void *gamed)
 	game = gamed;
 	ft_move_perso(game);
 	ft_check_coin(game);
+	ft_close_window(game);
 }

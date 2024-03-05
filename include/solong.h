@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/29 18:37:25 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:38:17 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_map
 
 typedef struct s_game
 {
+	int			count_move;
 	t_map		*map;
 	t_texture	*texture;
 	t_image		*image;
@@ -89,6 +90,8 @@ int	ft_check_exit_item_start(t_game *game, int i);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
+void	ft_close_window(t_game *game);
+void	ft_free_img(t_game *game);
 
 int	ft_path_finding(int x, int y, char **cells);
 
@@ -122,5 +125,6 @@ void	ft_print_all_lst(t_coin *coin);
 t_coin	ft_lst_back(t_coin *coin);
 
 void	ft_lstdelone(t_coin **coin);
+
 
 #endif

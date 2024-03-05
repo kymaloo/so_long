@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:08:25 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/26 15:51:09 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:24:34 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,29 @@ void	ft_move_perso(t_game *game)
 	game->map->py = game->image->player->instances[0].y;
 
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W) && !ft_check_collision_top(game))
+	{
 		game->image->player->instances[0].y -= 5;
+		game->count_move++;
+		printf("Nombre de mouvement : %d\n", game->count_move);
+	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S) && !ft_check_collision_bot(game))
+	{
 		game->image->player->instances[0].y += 5;
+		game->count_move++;
+		printf("Nombre de mouvement : %d\n", game->count_move);
+	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_A) && !ft_check_collision_left(game))
+	{
 		game->image->player->instances[0].x -= 5;
+		game->count_move++;
+		printf("Nombre de mouvement : %d\n", game->count_move);
+	}
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D) && !ft_check_collision_right(game))
+	{
 		game->image->player->instances[0].x += 5;
+		game->count_move++;
+		printf("Nombre de mouvement : %d\n", game->count_move);
+	}
 }
 
 int	ft_check_collision_top(t_game *game)

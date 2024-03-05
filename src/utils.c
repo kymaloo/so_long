@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:53:47 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 21:20:57 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:38:46 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,42 @@ char	*ft_strdup(const char *s)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+void	ft_close_window(t_game *game)
+{
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+	{
+		ft_free_img(game);
+		mlx_close_window(game->mlx);
+	}
+}
+
+void	ft_free_img(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map->grid[i])
+	{
+		j = 0;
+		while (game->map->grid[i][j])
+		{
+			mlx_delete_image(game->mlx, game->image->floor);
+			if (game->map->grid[i][j] == '1')
+				mlx_delete_image(game->mlx, game->image->wall);
+			if (game->map->grid[i][j] == 'C')
+				mlx_delete_image(game->mlx, (*game->coin)->item);
+			if (game->map->grid[i][j] == 'E')
+				mlx_delete_image(game->mlx, game->image->exit);
+			if (game->map->grid[i][j] == 'P')
+			{
+				mlx_delete_image(game->mlx, game->image->spawn);
+				mlx_delete_image(game->mlx, game->image->player);
+			}
+			j++;
+		}
+		i++;
+	}
 }
