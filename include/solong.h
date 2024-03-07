@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/05 17:38:17 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:20:45 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	ft_open_map(t_game *game);
 int	ft_init_check(t_game *game);
 
 int	ft_init_window(t_game *game);
+void	init_value(t_game *game);
 
 void	ft_setup_texture(t_game *game);
 void	ft_setup_image(t_game *game);

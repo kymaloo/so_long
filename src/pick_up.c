@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:32:08 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/29 18:35:53 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:19:46 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ void	ft_check_coin(t_game *game)
 void	ft_lst_parse(t_game *game, int i, int j)
 {
 	t_coin	*cursor;
-	int	popo;
+	int	k;
 
-	popo = 0;
+	k = 0;
 	
 	cursor = *game->coin;
 	while (cursor)
 	{
 		//ft_print_all_lst(cursor);
 		printf("%d,%d\n%d,%d\n\n", cursor->y, cursor->x, i, j);
-		if (cursor->y == i && cursor->x == j && (*game->coin)->item->instances[popo].enabled)
+		if (cursor->y == i && cursor->x == j && (*game->coin)->item->instances[k].enabled)
 		{
-	 		(*game->coin)->item->instances[popo].enabled = 0;
+	 		(*game->coin)->item->instances[k].enabled = 0;
 			game->map->grid[i][j] = '0';
 			//ft_lstdelone(&cursor);
 			return ;
 		}
 		else
 			cursor = cursor->next;
-		popo++;
+		k++;
 	}
 }

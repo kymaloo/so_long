@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:19:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 21:20:49 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:50:33 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_count_line(t_game *game, int fd)
 {
 	char	*gnl;
 
-	game->map->count_line = 0;
 	gnl = get_next_line(fd);
 	while (gnl)
 	{
@@ -34,7 +33,7 @@ void	*ft_stock_map(t_game *game, int fd)
 	game->map->grid = malloc(sizeof(char *) * (game->map->count_line + 1));
 	if (!game->map->grid)
 	{
-		ft_free_all_and_exit(game->map->grid, i);
+		ft_free_all_and_exit(game->map->grid, game->map->count_line);
 		return (NULL);
 	}
 	while (i < game->map->count_line)
@@ -48,8 +47,11 @@ void	*ft_stock_map(t_game *game, int fd)
 
 void	*ft_free_all_and_exit(char **tab, int i)
 {
-	while (tab[--i] && i >= 0)
-		free(tab[i]);
+	int	j;
+
+	j = i;
+	while (tab[--j] && j >= 0)
+		free(tab[j]);
 	free(tab);
 	exit(0);
 }
@@ -62,7 +64,7 @@ void	*ft_copy_stock_map(t_game *game)
 	game->map->grid_copy = malloc(sizeof(char *) * (game->map->count_line + 1));
 	if (!game->map->grid_copy)
 	{
-		ft_free_all_and_exit(game->map->grid_copy, i);
+		ft_free_all_and_exit(game->map->grid_copy, game->map->count_line);
 		return (NULL);
 	}
 	while (i < game->map->count_line)

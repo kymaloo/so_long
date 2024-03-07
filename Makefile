@@ -29,8 +29,9 @@ r: re
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) 
 
+re :
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME) -fsanitize=address
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJS)

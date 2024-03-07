@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:24:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/27 17:19:18 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:21:07 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ int	ft_open_map(t_game *game)
 
 int	ft_init_check(t_game *game)
 {
-	game->map->exit = 0;
-	game->map->item = 0;
-	game->map->start = 0;
 	if (ft_check_map_is_rectangle(game) != 0)
 		return (-1);
 	if (ft_check_wall(game) != 0)
@@ -57,4 +54,13 @@ int	ft_init_window(t_game *game)
 	if (!game->mlx)
 		return (-1);
 	return (0);
+}
+
+void	init_value(t_game *game)
+{
+	game->count_move = 0;
+	game->map->count_line = 0;
+	game->map->exit = 0;
+	game->map->item = 0;
+	game->map->start = 0;
 }
