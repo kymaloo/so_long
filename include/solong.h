@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/07 14:20:45 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:26:42 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_game
 	t_texture	*texture;
 	t_image		*image;
 	t_coin		**coin;
-    mlx_t   	*mlx;
+	mlx_t   	*mlx;
 }			t_game;
 
 
@@ -81,6 +81,7 @@ void	ft_count_line(t_game *game, int fd);
 void	*ft_stock_map(t_game *game, int fd);
 void	*ft_copy_stock_map(t_game *game);
 void	*ft_free_all_and_exit(char **tab, int i);
+void	ft_free_all(char **tab, int i);
 
 int	ft_check_map_format_ber(char *str);
 int	ft_check_map_is_rectangle(t_game *game);
