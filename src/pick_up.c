@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:32:08 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/13 13:58:52 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/17 10:01:35 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ void	ft_lst_parse(t_game *game, int i, int j)
 	cursor = *game->coin;
 	while (cursor)
 	{
-		//ft_print_all_lst(cursor);
 		printf("%d,%d\n%d,%d\n\n", cursor->y, cursor->x, i, j);
 		if (cursor->y == i && cursor->x == j && (*game->coin)->item->instances[k].enabled)
 		{
 	 		(*game->coin)->item->instances[k].enabled = 0;
 			game->map->grid[i][j] = '0';
-			//ft_lstdelone(&cursor);
 			return ;
 		}
 		else

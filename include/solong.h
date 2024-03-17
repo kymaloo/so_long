@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/13 14:26:42 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/17 10:09:50 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_texture
 typedef struct s_image
 {
 	mlx_image_t	*wall;
-	//mlx_image_t	*item;
 	mlx_image_t	*spawn;
 	mlx_image_t	*floor;
 	mlx_image_t	*exit;
