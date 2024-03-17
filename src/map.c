@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:19:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/13 14:26:32 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/17 08:53:31 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	*ft_stock_map(t_game *game, int fd)
 		i++;
 	}
 	game->map->grid[i] = NULL;
+	printf("%d\n", i);
 	return (0);
 }
 
@@ -73,7 +74,7 @@ void	*ft_copy_stock_map(t_game *game)
 
 void	ft_free_all(char **tab, int i)
 {
-	while (tab[--i] && i >= 0)
+	while (--i >= 0)
 		free(tab[i]);
 	free(tab);
 }

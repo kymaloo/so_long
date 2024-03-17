@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/13 14:31:16 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/17 08:43:04 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(void)
 	//mlx_loop_hook(game->mlx, &ft_hook, game);
 	//mlx_loop(game->mlx);
 	printf("%d\n", game->map->count_line);
-	ft_free_all(game->map->grid_copy, game->map->count_line);
-	ft_free_all(game->map->grid, game->map->count_line);
+	ft_free_all(game->map->grid_copy, game->map->count_line + 1);
+	ft_free_all(game->map->grid, game->map->count_line + 1);
 	// free(game->map->grid_copy);
 	// free(game->map->grid);
 	free(game->map);

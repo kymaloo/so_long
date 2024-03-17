@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:23:25 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/02/12 15:15:47 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/17 08:16:42 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_get_line(char *str)
 		return (str);
 	while (str[i] && str[i] != '\n')
 		i++;
-	str_return = malloc((sizeof(char) * i) + 2);
+	str_return = malloc((sizeof(char) * i) + 1);
 	if (!str_return)
 		return (NULL);
 	i = 0;

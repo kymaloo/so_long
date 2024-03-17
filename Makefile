@@ -26,6 +26,9 @@ all: $(NAME)
 r: re
 	./$(NAME)
 
+v: r
+	valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME)
+
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) 
 
