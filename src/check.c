@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:52 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/30 19:19:11 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/30 19:39:22 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	ft_check_map_is_rectangle(t_game *game)
 	while (i != game->map->count_line)
 	{
 		if (ft_strlen(game->map->grid[i]) != game->map->line_size)
-			return (ft_printf("Error: The len size different of line size!\n"), -1);
+			return (ft_printf("Error: The len size \
+			different of line size!\n"), -1);
 		i++;
 	}
 	return (0);
@@ -54,8 +55,8 @@ int	ft_check_wall(t_game *game)
 	while (game->map->grid[i] && i < game->map->count_line)
 	{
 		if (game->map->grid[i][j] != '1' || game->map->grid[i][0] != '1')
-			return (ft_printf("Error: The first and the last char is not wall!\n"), \
-				-1);
+			return (ft_printf("Error: The first and the last char \
+			is not wall!\n"), -1);
 		i++;
 	}
 	i = 0;

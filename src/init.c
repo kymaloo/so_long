@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:24:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/30 19:20:49 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/30 19:38:41 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	ft_init_check(t_game *game)
 	if (ft_check_map(game) != 0)
 		return (ft_printf("Error: The map is not valid!\n"), -1);
 	if (ft_check_exit_item_start(game, 0) != 0)
-		return (ft_printf("Error: The map does not have the prerequistes!\n"), -1);
+		return (ft_printf("Error: The map does not have the \
+		prerequistes!\n"), -1);
 	if (ft_path_finding(game->map->pos_start_y, \
 		game->map->pos_start_x, game->map->grid_copy) \
 		!= (game->map->exit + game->map->item))

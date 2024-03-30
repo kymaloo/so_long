@@ -36,6 +36,7 @@ v: re
 
 n :
 	norminette src/ include/
+
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
