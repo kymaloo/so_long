@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   t_coin2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/30 19:20:56 by trgaspar         ###   ########.fr       */
+/*   Created: 2024/03/25 15:03:51 by trgaspar          #+#    #+#             */
+/*   Updated: 2024/03/26 16:48:07 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int	main(void)
+void	ft_lstdelone(void *mlx, t_coin *coin)
 {
-	t_game	*game;
+	if (coin)
+	{
+		mlx_delete_image(mlx, coin->item);
+		free(coin);
+	}
+}
 
-	game = malloc(sizeof(t_game));
-	if (!game)
-		return (-1);
-	if (init_game(game) != 0)
-		return (ft_printf("Error: Init failed!\n"), -1);
-	game->map->nb_coin = 0;
-	mlx_loop_hook(game->mlx, &ft_hook, game);
-	mlx_loop(game->mlx);
-	return (0);
+void	ft_lstclear(t_coin **coin, void *mlx)
+{
+	t_coin	*tmp;
+	t_coin	*tmp2;
+
+	if (!coin)
+		return ;
+	tmp = *coin;
+	while (tmp)
+	{
+		tmp2 = tmp->next;
+		ft_lstdelone(mlx, tmp);
+		tmp = tmp2;
+	}
+	*coin = NULL;
 }

@@ -11,6 +11,7 @@ SRCS	:= 	src/main.c \
 			src/get_next_line_utils.c \
 			src/map.c \
 			src/check.c \
+			src/check2.c \
 			src/utils.c \
 			src/path_finding.c \
 			src/init.c \
@@ -18,6 +19,10 @@ SRCS	:= 	src/main.c \
 			src/move.c \
 			src/pick_up.c \
 			src/t_coin.c \
+			src/t_coin2.c \
+			src/utils2.c \
+			src/printf2.c \
+			src/printf.c \
 
 OBJS	:= ${SRCS:.c=.o}
 
@@ -26,16 +31,18 @@ all: $(NAME)
 r: re
 	./$(NAME)
 
-v: r
-	valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME)
+v: re
+	valgrind ./$(NAME)
 
+n :
+	norminette src/ include/
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) 
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 re :
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME) -fsanitize=address
-
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	
 clean:
 	@rm -rf $(OBJS)
 

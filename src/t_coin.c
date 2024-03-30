@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:41:29 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/13 13:58:54 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/30 19:21:20 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	ft_lstadd_back(t_coin **coin, t_coin *new)
 	}
 }
 
-
 void	ft_print_all_lst(t_coin *coin)
 {
 	t_coin	*cursor;
@@ -69,22 +68,7 @@ void	ft_print_all_lst(t_coin *coin)
 	cursor = coin;
 	while (cursor)
 	{
-		printf("x : %d | y : %d\n", cursor->x, cursor->y);
+		ft_printf("x : %d | y : %d\n", cursor->x, cursor->y);
 		cursor = cursor->next;
 	}
-}
-
-void	ft_lstdelone(t_coin **coin)
-{
-	t_coin	*tmp;
-
-	if (!(*coin)->next)
-	{
-		free(*coin);
-		return ;
-	}
-	tmp = *coin;
-	(*coin)->next = (*coin)->next->next;
-	 (*coin) =  (*coin)->next;
-	free(tmp);
 }

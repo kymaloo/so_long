@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:53:47 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/13 13:59:09 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:48:12 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	s1_cast = (unsigned char *)s1;
 	s2_cast = (unsigned char *)s2;
 	i = 0;
-	while (s1_cast[i] == s2_cast[i] && s1_cast[i] && s2_cast[i] && i < n)
+	while (s1_cast[i] == s2_cast[i] && s1_cast[i] && s2_cast[i] && i < n - 1)
 		i++;
 	if (n == i)
-		return (0);
+		return (-1);
 	return (s1_cast[i] - s2_cast[i]);
 }
 
@@ -82,4 +82,16 @@ void	ft_free_img(t_game *game)
 		}
 		i++;
 	}
+}
+
+void	ft_delete_texture(t_game *game)
+{
+	mlx_delete_image(game->mlx, (*game->coin)->item);
+	mlx_delete_texture(game->texture->floor);
+	mlx_delete_texture(game->texture->wall);
+	mlx_delete_texture(game->texture->spawn);
+	mlx_delete_texture(game->texture->exit);
+	mlx_delete_texture(game->texture->player);
+	ft_lstclear(game->coin, game->mlx);
+	mlx_delete_texture(game->texture->item);
 }
