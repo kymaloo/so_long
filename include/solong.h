@@ -6,7 +6,7 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:45:07 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/30 19:15:58 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:34:17 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ int		ft_check_exit_item_start(t_game *game, int i);
 void	ft_check_exit_item_start2(int i, t_game *game);
 
 // File : init.c
-int		ft_open_map(t_game *game);
+int		ft_open_map(t_game *game, char *str);
 int		ft_init_check(t_game *game);
 int		ft_init_window(t_game *game);
 int		init_value(t_game *game);
-int		init_game(t_game *game);
+int		init_game(t_game *game, char *str);
 
 // File : map.c
 void	ft_count_line(t_game *game, int fd);
@@ -137,14 +137,12 @@ void	ft_lstadd_back(t_coin **coin, t_coin *new);
 void	ft_print_all_lst(t_coin *coin);
 
 // File : t_coin2.c
-void	ft_lstdelone(void *mlx, t_coin *coin);
-void	ft_lstclear(t_coin **coin, void *mlx);
+void	ft_lstclear(t_coin **coin);
 
 // File : utils.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s);
 void	ft_close_window(t_game *game);
-void	ft_free_img(t_game *game);
 void	ft_delete_texture(t_game *game);
 
 // File : utils2.c

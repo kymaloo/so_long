@@ -6,15 +6,14 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:24:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/03/30 19:38:41 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:37:00 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int	ft_open_map(t_game *game)
+int	ft_open_map(t_game *game, char *str)
 {
-	char	*str;
 	int		fd;
 
 	str = "maps/map.ber";
@@ -42,8 +41,8 @@ int	ft_init_check(t_game *game)
 	if (ft_check_map(game) != 0)
 		return (ft_printf("Error: The map is not valid!\n"), -1);
 	if (ft_check_exit_item_start(game, 0) != 0)
-		return (ft_printf("Error: The map does not have the \
-		prerequistes!\n"), -1);
+		return (ft_printf("Error: The map does not have \
+		the prerequistes!\n"), -1);
 	if (ft_path_finding(game->map->pos_start_y, \
 		game->map->pos_start_x, game->map->grid_copy) \
 		!= (game->map->exit + game->map->item))
@@ -75,28 +74,37 @@ int	init_value(t_game *game)
 	game->texture = malloc(sizeof(t_texture));
 	if (!game->texture)
 	{
+		free(game->map);
 		free(game);
 		return (ft_printf("Error: Malloc crash!\n"), -1);
 	}
 	game->image = malloc(sizeof(t_image));
 	if (!game->image)
 	{
+		free(game->texture);
+		free(game->map);
 		free(game);
 		return (ft_printf("Error: Malloc crash!\n"), -1);
+	}
+	return (0);
+}
+
+int	init_game(t_game *game, char *str)
+{
+	if (init_value(game) != 0)
+	{
+		free(game->image);
+		free(game->texture);
+		free(game->map);
+		free(game);
+		return (ft_printf("Error: The value is not init!\n"), -1);
 	}
 	game->count_move = 0;
 	game->map->count_line = 0;
 	game->map->exit = 0;
 	game->map->item = 0;
 	game->map->start = 0;
-	return (0);
-}
-
-int	init_game(t_game *game)
-{
-	if (init_value(game) != 0)
-		return (ft_printf("Error: The value is not init!\n"), -1);
-	if (ft_open_map(game) != 0)
+	if (ft_open_map(game, str) != 0)
 		return (ft_printf("Error: The map is not open!\n"), -1);
 	ft_copy_stock_map(game);
 	if (ft_init_check(game) != 0)

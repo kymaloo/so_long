@@ -32,17 +32,16 @@ r: re
 	./$(NAME)
 
 v: re
-	valgrind ./$(NAME)
+	valgrind -s --leak-check=full --track-origins=yes ./$(NAME)
 
 n :
 	norminette src/ include/
-
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 re :
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 	
 clean:
 	@rm -rf $(OBJS)
