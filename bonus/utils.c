@@ -6,11 +6,11 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:53:47 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/19 17:06:26 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:49:29 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -64,6 +64,12 @@ void	ft_delete_texture(t_game *game)
 	game->texture->exit = NULL;
 	mlx_delete_texture(game->texture->player);
 	game->texture->player = NULL;
+	mlx_delete_texture(game->texture->player2);
+	game->texture->player2 = NULL;
 	mlx_delete_texture(game->texture->item);
 	game->texture->item = NULL;
+	mlx_delete_texture(game->texture->flag);
+	game->texture->flag = NULL;
+	mlx_delete_texture(game->texture->trap);
+	game->texture->trap = NULL;
 }

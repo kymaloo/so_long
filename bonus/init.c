@@ -6,11 +6,11 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:24:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/19 17:07:25 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:46:27 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_open_map(t_game *game, char *str)
 {

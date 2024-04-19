@@ -6,11 +6,11 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:48:38 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/19 17:56:20 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:57:49 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	main(int argc, char *argv[])
 {

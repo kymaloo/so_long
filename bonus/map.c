@@ -6,11 +6,11 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:19:41 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/14 16:42:59 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/04/15 21:27:02 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 void	ft_count_line(t_game *game, int fd)
 {

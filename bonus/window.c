@@ -6,11 +6,11 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:16:23 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/14 17:00:42 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/04/15 21:27:31 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_setup_texture(t_game *game)
 {
@@ -46,6 +46,10 @@ void	ft_setup_image(t_game *game)
 	(*game->coin)->item = mlx_texture_to_image(game->mlx, game->texture->item);
 	game->image->spawn = mlx_texture_to_image(game->mlx, game->texture->spawn);
 	game->image->exit = mlx_texture_to_image(game->mlx, game->texture->exit);
+	game->image->flag = mlx_texture_to_image(game->mlx, game->texture->flag);
+	game->image->player2 = \
+		mlx_texture_to_image(game->mlx, game->texture->player2);
+	game->image->trap = mlx_texture_to_image(game->mlx, game->texture->trap);
 	game->image->player = \
 		mlx_texture_to_image(game->mlx, game->texture->player);
 	ft_setup_img_to_window(game, 0);
@@ -62,6 +66,9 @@ void	ft_setup_img_to_window(t_game *game, int i)
 		game->map->pos_start_y_2 * 70, game->map->pos_start_x_2 * 70);
 	mlx_image_to_window(game->mlx, game->image->player, \
 		game->map->pos_start_y_2 * 70, game->map->pos_start_x_2 * 70);
+	mlx_image_to_window(game->mlx, game->image->player2, \
+		game->map->pos_start_y_2 * 70, game->map->pos_start_x_2 * 70);
+	game->image->player2->instances[0].enabled = 0;
 }
 
 void	ft_while_for_img_to_window(int i, t_game *game)
@@ -87,6 +94,7 @@ void	ft_while_for_img_to_window(int i, t_game *game)
 			game->map->pos_start_x_2 = i;
 			game->map->pos_start_y_2 = j;
 		}
+		ft_while_for_img_to_window2(i, j, game);
 		j++;
 	}
 }
@@ -100,4 +108,6 @@ void	ft_hook(void *gamed)
 	ft_check_coin(game);
 	ft_close_window(game);
 	ft_win_condition(game);
+	ft_all_tp(game);
+	ft_trap(game);
 }

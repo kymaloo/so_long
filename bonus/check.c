@@ -6,29 +6,22 @@
 /*   By: trgaspar <trgaspar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:51:52 by trgaspar          #+#    #+#             */
-/*   Updated: 2024/04/11 21:18:17 by trgaspar         ###   ########.fr       */
+/*   Updated: 2024/04/15 21:26:37 by trgaspar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "solong_bonus.h"
 
 int	ft_check_map_format_ber(char *str)
 {
-	int	status;
-	int	len_str;
+	int		len_str;
 
-	status = EXIT_FAILURE;
 	len_str = ft_strlen(str);
-	if (len_str > 4)
-	{
-		if (ft_strncmp(&str[len_str - 4], ".ber", 4) == 0)
-			status = EXIT_SUCCESS;
-		else
-			ft_printf("Error: The len is false!\n");
-	}
-	else
-		ft_printf("Error: The len of str is too small!\n");
-	return (status);
+	if (len_str < 5)
+		return (ft_printf("Error: The len of str is too small!\n"), -1);
+	if (ft_strncmp(&str[len_str - 4], ".ber", 4) != 0)
+		return (ft_printf("Error: The len is false!\n"), -1);
+	return (0);
 }
 
 int	ft_check_map_is_rectangle(t_game *game)
@@ -87,7 +80,8 @@ int	ft_check_map(t_game *game)
 		{
 			if (game->map->grid[i][j] != '1' && game->map->grid[i][j] != '0' &&
 			game->map->grid[i][j] != 'C' && game->map->grid[i][j] != 'P' &&
-			game->map->grid[i][j] != 'E')
+			game->map->grid[i][j] != 'E' && game->map->grid[i][j] != 'A' &&
+			game->map->grid[i][j] != 'D' && game->map->grid[i][j] != 'T')
 				return (ft_printf("Error: The map is not ready!\n"), -1);
 			j++;
 		}
@@ -101,7 +95,8 @@ int	ft_check_exit_item_start(t_game *game, int i)
 	game->coin = malloc(sizeof(t_coin *) + 1);
 	*(game->coin) = NULL;
 	ft_check_exit_item_start2(i, game);
-	if (game->map->exit != 1 || game->map->item < 1 || game->map->start != 1)
+	if (game->map->exit != 1 || game->map->item < 1 || game->map->start != 1
+		|| game->map->tp1 != 1 || game->map->tp2 != 1 || game->map->trap < 0)
 		return (ft_printf("Error: Nope!\n"), -1);
 	return (0);
 }
